@@ -10,7 +10,7 @@ const morgan = require('morgan');
 
 const app = express();
 const DIST_DIR = process.cwd();
-const HTML_FILE = path.join(DIST_DIR, 'index.html');
+const HTML_FILE = path.join(DIST_DIR, 'dist/index.html');
 
 // use bodyParser to parse application/json content-type
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -23,6 +23,7 @@ app.use(morgan('combined'));
 
 
 app.use(express.static(DIST_DIR))
+
 app.get('*', (req, res) => {
     res.sendFile(HTML_FILE)
 });

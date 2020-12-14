@@ -2,16 +2,15 @@ require('dotenv').config();
 
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const webpack = require('webpack');
-const CompressionPlugin = require('compression-webpack-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
-    entry: './src/index.js',
+    entry: {
+        index: './src/index.js'
+    },
     output: {
         path: __dirname + '/dist',
         publicPath: '/',
-        chunkFilename: '[name].[chunkhash].chunk.js',
+        filename: 'bundle.js',
     },
     devServer: {
         contentBase: './dist',
@@ -33,49 +32,9 @@ module.exports = {
             }
         ]
     },
-    optimization: {
-        minimize: true,
-        minimizer: [
-            new TerserPlugin({
-                terserOptions: {
-                    warnings: false,
-                    compress: {
-                        comparisons: false,
-                    },
-                    parse: {},
-                    mangle: true,
-                    output: {
-                        comments: false,
-                        ascii_only: true,
-                    },
-                },
-                parallel: true,
-            }),
-        ],
-        nodeEnv: 'production',
-        sideEffects: true,
-        concatenateModules: true,
-        splitChunks: {
-            chunks: 'all',
-            minSize: 30000,
-            minChunks: 1,
-            maxAsyncRequests: 5,
-            maxInitialRequests: 3,
-        },
-        runtimeChunk: true,
-    },
     plugins: [
         new HtmlWebpackPlugin({
             template: path.resolve('./index.html'),
-        }),
-        new webpack.DefinePlugin({
-            'process.env':  JSON.stringify(process.env),
-        }),
-        new CompressionPlugin({
-            algorithm: 'gzip',
-            test: /\.js$|\.css$|\.html$/,
-            threshold: 10240,
-            minRatio: 0.8,
         }),
     ],
     resolve: {
