@@ -2341,6 +2341,14 @@ compressible@~2.0.16:
   dependencies:
     mime-db ">= 1.43.0 < 2"
 
+compression-webpack-plugin@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/compression-webpack-plugin/-/compression-webpack-plugin-7.0.0.tgz#a48401e62f8b89a21fcf96928991e05de5fbd6cf"
+  integrity sha512-IBB47JDleWQ+ZElXQIi+225qj5NOPem0/u8tQuXA/R2R0UpnPlqtD6JDXNbjq3xYhEi8z/Hw3SvORWaafrxe0w==
+  dependencies:
+    schema-utils "^3.0.0"
+    serialize-javascript "^5.0.1"
+
 compression@^1.7.4:
   version "1.7.4"
   resolved "https://registry.yarnpkg.com/compression/-/compression-1.7.4.tgz#95523eff170ca57c29a0ca41e6fe131f41e5bb8f"

@@ -38,17 +38,12 @@ const rrfProps = {
 import { LanguageProvider } from "./LanguageProvider";
 import { FormattedMessage } from "react-intl";
 
-//Global Context
-import { GlobalProvider } from "Context/GlobalContext";
-
 const App = ({ messages }) => {
     return (
         <Provider store = {store}>
             <ReactReduxFirebaseProvider {...rrfProps}>
                 <LanguageProvider messages={messages} >
-                    <GlobalProvider>
-                        <FormattedMessage id="testMessage" />
-                    </GlobalProvider>
+                    <FormattedMessage id="testMessage" />
                 </LanguageProvider>
             </ReactReduxFirebaseProvider>
         </Provider>

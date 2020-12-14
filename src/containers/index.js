@@ -1,1 +1,1 @@
-export * from './Laoyouts'
+export * from './Laoyouts';
