@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 import {
-  space,
-  border,
-  typography,
-  shadow,
-  flexbox,
-  layout,
+    space,
+    border,
+    typography,
+    shadow,
+    flexbox,
+    layout
 } from "styled-system";
 
 const CheckStyled = styled.label`
@@ -52,19 +52,19 @@ const Text = styled.p`
 `;
 
 const Checkbox = ({
-  children = "Keep me signed in",
-  onClick = () => {},
-  ...rest
+    children = "Keep me signed in",
+    onClick = () => {},
+    ...rest
 }) => {
-  const uID = "check_";
+    const uID = "check_";
 
-  return (
-    <CheckStyled {...rest} htmlFor={uID}>
-      <input className="d-none" type="checkbox" id={uID} />
-      <Check className="check"></Check>
-      <Text>{children}</Text>
-    </CheckStyled>
-  );
+    return (
+        <CheckStyled {...rest} htmlFor={uID}>
+            <input className="d-none" type="checkbox" id={uID} />
+            <Check className="check" />
+            <Text>{children}</Text>
+        </CheckStyled>
+    );
 };
 
 export default Checkbox;

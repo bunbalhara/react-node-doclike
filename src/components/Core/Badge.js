@@ -1,14 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import {
-  color,
-  background,
-  space,
-  border,
-  typography,
-  shadow,
-  flexbox,
-  layout,
+    color,
+    background,
+    space,
+    border,
+    typography,
+    shadow,
+    flexbox,
+    layout
 } from "styled-system";
 
 const BadgeSolid = styled.span`
@@ -32,15 +32,15 @@ const BadgeSolid = styled.span`
 `;
 
 const Badge = ({ color = "light", bg = "primary", ...rest }) => {
-  return (
-    <BadgeSolid
-      color={color}
-      border={`1px solid`}
-      borderColor={bg}
-      bg={bg}
-      {...rest}
-    />
-  );
+    return (
+        <BadgeSolid
+            color={color}
+            border={`1px solid`}
+            borderColor={bg}
+            bg={bg}
+            {...rest}
+        />
+    );
 };
 
 export default Badge;

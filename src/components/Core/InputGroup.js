@@ -19,25 +19,25 @@ const Icon = styled.div`
 `;
 
 const InputGroup = ({
-  type = "text",
-  focusColor = "secondary",
-  icon = <span className="far fa-envelope" />,
-  ...rest
+    type = "text",
+    focusColor = "secondary",
+    icon = <span className="far fa-envelope" />,
+    ...rest
 }) => {
-  return (
-    <InputGroupStyled>
-      <Input
-        width="100%"
-        type={type}
-        color="text"
-        bg="light"
-        focusColor={focusColor}
-        pl="4.125rem"
-        {...rest}
-      />
-      <Icon className="d-flex align-items-center">{icon}</Icon>
-    </InputGroupStyled>
-  );
+    return (
+        <InputGroupStyled>
+            <Input
+                width="100%"
+                type={type}
+                color="text"
+                bg="light"
+                focusColor={focusColor}
+                pl="4.125rem"
+                {...rest}
+            />
+            <Icon className="d-flex align-items-center">{icon}</Icon>
+        </InputGroupStyled>
+    );
 };
 
 export default InputGroup;

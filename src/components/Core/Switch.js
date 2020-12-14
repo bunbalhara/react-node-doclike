@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import {
-  space,
-  border,
-  typography,
-  shadow,
-  flexbox,
-  layout,
+    space,
+    border,
+    typography,
+    shadow,
+    flexbox,
+    layout
 } from "styled-system";
 
 const SwitchStyled = styled.div`
@@ -17,7 +17,7 @@ const SwitchStyled = styled.div`
   border-radius: 17px;
   transition: all 0.3s ease-out;
   background: ${({ active, theme, bg }) =>
-    active ? theme.colors[bg] : `#eae9f2`};
+        active ? theme.colors[bg] : `#eae9f2`};
   position: relative;
   margin: 0 15px;
   white-space: nowrap;
@@ -45,23 +45,23 @@ const Round = styled.span`
 `;
 
 const Switch = ({ bg = "secondary", onClick = () => {}, ...rest }) => {
-  const [active, setActive] = useState(false);
+    const [active, setActive] = useState(false);
 
-  const handleSwitch = () => {
-    setActive(!active);
-    onClick();
-  };
+    const handleSwitch = () => {
+        setActive(!active);
+        onClick();
+    };
 
-  return (
-    <SwitchStyled
-      bg={bg}
-      {...rest}
-      onClick={handleSwitch}
-      active={active ? 1 : 0}
-    >
-      <Round active={active ? 1 : 0} />
-    </SwitchStyled>
-  );
+    return (
+        <SwitchStyled
+            bg={bg}
+            {...rest}
+            onClick={handleSwitch}
+            active={active ? 1 : 0}
+        >
+            <Round active={active ? 1 : 0} />
+        </SwitchStyled>
+    );
 };
 
 export default Switch;

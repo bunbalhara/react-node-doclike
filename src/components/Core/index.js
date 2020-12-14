@@ -14,18 +14,18 @@ import Span from "./Span";
 import List from "./List";
 
 export {
-  Box,
-  Title,
-  Text,
-  A,
-  Badge,
-  Button,
-  Section,
-  Input,
-  Checkbox,
-  InputGroup,
-  Select,
-  Switch,
-  Span,
-  List,
+    Box,
+    Title,
+    Text,
+    A,
+    Badge,
+    Button,
+    Section,
+    Input,
+    Checkbox,
+    InputGroup,
+    Select,
+    Switch,
+    Span,
+    List
 };

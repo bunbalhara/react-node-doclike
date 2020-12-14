@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 import {
-  color,
-  space,
-  typography,
-  shadow,
-  layout,
-  border,
+    color,
+    space,
+    typography,
+    shadow,
+    layout,
+    border
 } from "styled-system";
 
 const InputSolid = styled.input`
@@ -82,28 +82,28 @@ const InputAnimation = styled.div`
 `;
 
 const Input = ({
-  variant = "solid",
-  type = "text",
-  focusColor = "secondary",
-  placeholder,
-  ...rest
+    variant = "solid",
+    type = "text",
+    focusColor = "secondary",
+    placeholder,
+    ...rest
 }) => {
-  return variant === "animation" ? (
-    <InputAnimation {...rest}>
-      <input width="100%" type={type} color="text" bg="light" />
-      <label>{placeholder}</label>
-    </InputAnimation>
-  ) : (
-    <InputSolid
-      width="100%"
-      type={type}
-      color="text"
-      bg="light"
-      placeholder={placeholder}
-      focusColor={focusColor}
-      {...rest}
-    />
-  );
+    return variant === "animation" ? (
+        <InputAnimation {...rest}>
+            <input width="100%" type={type} color="text" bg="light" />
+            <label>{placeholder}</label>
+        </InputAnimation>
+    ) : (
+        <InputSolid
+            width="100%"
+            type={type}
+            color="text"
+            bg="light"
+            placeholder={placeholder}
+            focusColor={focusColor}
+            {...rest}
+        />
+    );
 };
 
 export default Input;

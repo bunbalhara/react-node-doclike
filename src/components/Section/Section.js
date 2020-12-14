@@ -23,11 +23,11 @@ const DivStyledInside = styled(DivStyled)`
 `;
 
 const Section = ({ children, inside, ...rest }) => {
-  return inside ? (
-    <DivStyledInside {...rest}> {children}</DivStyledInside>
-  ) : (
-    <DivStyled {...rest}> {children}</DivStyled>
-  );
+    return inside ? (
+        <DivStyledInside {...rest}> {children}</DivStyledInside>
+    ) : (
+        <DivStyled {...rest}> {children}</DivStyled>
+    );
 };
 
 export default Section;

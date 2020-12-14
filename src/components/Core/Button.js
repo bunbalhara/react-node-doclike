@@ -1,14 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import {
-  color,
-  background,
-  space,
-  border,
-  typography,
-  shadow,
-  flexbox,
-  layout,
+    color,
+    background,
+    space,
+    border,
+    typography,
+    shadow,
+    flexbox,
+    layout
 } from "styled-system";
 
 const ButtonSolid = styled.button`
@@ -83,28 +83,28 @@ const ButtonOutline = styled(ButtonSolid)`
 `;
 
 const Button = ({
-  variant = "solid",
-  color = "light",
-  bg = "primary",
-  ...rest
+    variant = "solid",
+    color = "light",
+    bg = "primary",
+    ...rest
 }) => {
-  return variant === "solid" ? (
-    <ButtonSolid
-      color={color}
-      border={`1px solid`}
-      borderColor={bg}
-      bg={bg}
-      {...rest}
-    />
-  ) : (
-    <ButtonOutline
-      color={color}
-      bg={bg}
-      border={`1px solid`}
-      borderColor={color}
-      {...rest}
-    />
-  );
+    return variant === "solid" ? (
+        <ButtonSolid
+            color={color}
+            border={`1px solid`}
+            borderColor={bg}
+            bg={bg}
+            {...rest}
+        />
+    ) : (
+        <ButtonOutline
+            color={color}
+            bg={bg}
+            border={`1px solid`}
+            borderColor={color}
+            {...rest}
+        />
+    );
 };
 
 export default Button;

@@ -1,29 +1,27 @@
-import React, {useState, useContext, useEffect} from "react";
+import React, { useState, useContext, useEffect } from "react";
 import styled from "styled-components";
 import { Container } from "react-bootstrap";
-import Link from "next/link";
-import LocalizedStrings from 'react-localization'
+import LocalizedStrings from 'react-localization';
 import GlobalContext from "../../context/GlobalContext";
 import Offcanvas from "../Offcanvas";
 import NestedMenu from "../NestedMenu";
-import {device, getCurrentLocation} from "../../utils";
+import { device, getCurrentLocation } from "../../utils";
 import Logo from "../Logo";
-import {useDispatch, useSelector} from "react-redux";
-import { useFirestoreConnect } from 'react-redux-firebase'
-import {SET_APP_COUNTRY, SET_APP_LOCALE} from "../../redux/actions";
+import { useDispatch, useSelector } from "react-redux";
+import { useFirestoreConnect } from 'react-redux-firebase';
+import { SET_APP_LOCALE } from "../../redux/actions";
 import MenuIcon from '@material-ui/icons/Menu';
-import Head from "next/head";
-import {JOB_SET_CURRENT_LOCATION} from "../../redux/actions";
-import {Hidden} from "@material-ui/core";
+import { JOB_SET_CURRENT_LOCATION } from "../../redux/actions";
+import { Hidden } from "@material-ui/core";
 
 let strings = new LocalizedStrings({
-    en:{
-        login:'Log in',
-        register:"Register",
+    en: {
+        login: 'Log in',
+        register: "Register"
     },
     fr: {
-        login:"S'identifier",
-        register:"S'inscrire",
+        login: "S'identifier",
+        register: "S'inscrire"
     }
 });
 
@@ -164,129 +162,127 @@ const MenuDropdown = styled.ul`
 `;
 
 const Header = ({ isDark = false }) => {
+    useFirestoreConnect([
+        {
+            collection: 'settings',
+            doc: 'countries',
+            storeAs: 'countryList'
+        },
+        {
+            collection: 'settings',
+            doc: 'locales',
+            storeAs: 'localeList'
+        }
+    ]);
+    const { localeList } = useSelector(state => state.firestore.ordered);
+    const { locale, hideHeader } = useSelector(state => state.app);
+    const gContext = useContext(GlobalContext);
+    const [showScrolling] = useState(false);
+    const [showReveal] = useState(false);
+    const dispatch = useDispatch();
+    strings.setLanguage(locale.code);
+    const [open, setOpen] = useState(false);
 
-    const mode = process.env.NEXT_PUBLIC_MODE;
-  useFirestoreConnect([
-      {
-          collection:'settings',
-          doc:'countries',
-          storeAs:'countryList'
-      },
-      {
-          collection:'settings',
-          doc:'locales',
-          storeAs:'localeList'
-      }
-  ])
-      const { localeList} = useSelector(state=>state.firestore.ordered);
-      const {locale, hideHeader} = useSelector(state=>state.app)
-      const gContext = useContext(GlobalContext);
-      const [showScrolling, setShowScrolling] = useState(false);
-      const [showReveal, setShowReveal] = useState(false);
-      const dispatch = useDispatch();
-      strings.setLanguage(locale.code);
-      const [open, setOpen] = useState(false)
-
-    useEffect(()=>{
-        getCurrentLocation(locale.code, (res)=>{
-            dispatch({type:JOB_SET_CURRENT_LOCATION, payload: res})
-        })
-    },[])
+    useEffect(() => {
+        getCurrentLocation(locale.code, (res) => {
+            dispatch({ type: JOB_SET_CURRENT_LOCATION, payload: res });
+        });
+    }, []);
 
 
-  return (
-    <>
-      <SiteHeader
-        className={`sticky-header ${showScrolling ? "scrolling" : ""} ${
-          showReveal ? "reveal-header" : "initial-header"
-        }  ${hideHeader?"header-hidden":""}`}
-      >
-        <Container fluid>
-          <nav className="navbar site-navbar offcanvas-active navbar-expand-lg navbar-light">
-            <div className="brand-logo">
-                    <Logo />
-            </div>
-            <div className="collapse navbar-collapse">
-              <div className="navbar-nav ml-lg-auto mr-3">
-                <Menu className="navbar-nav" >
-                    <li className="nav-item dropdown">
-                        <a
-                            className="nav-link dropdown-toggle"
-                            data-toggle="dropdown"
-                            href="/#"
-                            onClick={(e)=>e.preventDefault()}
+    return (
+        <>
+            <SiteHeader
+                className={`sticky-header ${showScrolling ? "scrolling" : ""} ${
+                    showReveal ? "reveal-header" : "initial-header"
+                }  ${hideHeader ? "header-hidden" : ""}`}
+            >
+                <Container fluid>
+                    <nav className="navbar site-navbar offcanvas-active navbar-expand-lg navbar-light">
+                        <div className="brand-logo">
+                            <Logo />
+                        </div>
+                        <div className="collapse navbar-collapse">
+                            <div className="navbar-nav ml-lg-auto mr-3">
+                                <Menu className="navbar-nav" >
+                                    <li className="nav-item dropdown">
+                                        <a
+                                            className="nav-link dropdown-toggle"
+                                            data-toggle="dropdown"
+                                            href="/#"
+                                            onClick={(e) => e.preventDefault()}
+                                        >
+                                            <img src={require(`../../assets/image/flags/${locale.code}.png`)}/>
+                                        </a>
+                                        <MenuDropdown
+                                            className="menu-dropdown dropdown-right"
+                                            dark={isDark ? 1 : 0}
+                                        >
+                                            {
+                                                localeList && localeList[0].list.map((locale, index) => (
+                                                    <li
+                                                        className="drop-menu-item"
+                                                        key={index}
+                                                        onClick={() => {dispatch({ type: SET_APP_LOCALE, payload: locale });}}
+                                                    >
+                                                        <img src={require(`../../assets/image/flags/${locale.code}.png`)}/>
+                                                        {locale.name}
+                                                    </li>
+                                                ))
+                                            }
+                                        </MenuDropdown>
+                                    </li>
+                                    <li className="nav-item">
+                                        <a
+                                            href="/"
+                                            className="nav-link"
+                                            role="button"
+                                            aria-expanded="false"
+                                        >
+                                            {strings.login}
+                                        </a>
+                                    </li>
+                                    <li className="nav-item">
+                                        <a
+                                            href="/"
+                                            className="nav-link"
+                                            role="button"
+                                            aria-expanded="false"
+                                        >
+                                            {strings.register}
+                                        </a>
+                                    </li>
+                                </Menu>
+                            </div>
+                        </div>
+                        <div
+                            className={`nav-toggle-btn ${gContext.visibleOffCanvas ? "collapsed" : ""}`}
+                            data-toggle="collapse"
+                            data-target="#mobile-menu"
+                            aria-controls="mobile-menu"
+                            aria-expanded="false"
+                            aria-label="Toggle navigation"
+                            onClick={gContext.toggleOffCanvas}
                         >
-                            <img src={require(`../../assets/image/flags/${locale.code}.png`)}/>
-                        </a>
-                        <MenuDropdown
-                            className="menu-dropdown dropdown-right"
-                            dark={isDark ? 1 : 0}
-                        >
-                            {
-                                localeList && localeList[0].list.map((locale, index) => (
-                                    <li
-                                        className="drop-menu-item"
-                                        key={index}
-                                        onClick={()=>{dispatch({type:SET_APP_LOCALE, payload: locale})}}
+                            <MenuIcon className="menu-icon"/>
+                        </div>
+
+                        <Hidden mdUp>
+                            <div style={{ position: 'absolute', right: 0 }}>
+                                <div className="position-relative" style={{ zIndex: 99999999999 }}>
+                                    <a
+                                        className="dropdown-toggle"
+                                        data-toggle="dropdown"
+                                        href="/#"
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            setOpen(true);
+                                        }}
                                     >
                                         <img src={require(`../../assets/image/flags/${locale.code}.png`)}/>
-                                        {locale.name}
-                                    </li>
-                                ))
-                            }
-                        </MenuDropdown>
-                    </li>
-                    <li className="nav-item">
-                        <a
-                            href="/"
-                            className="nav-link"
-                            role="button"
-                            aria-expanded="false"
-                        >
-                            {strings.login}
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a
-                            href="/"
-                            className="nav-link"
-                            role="button"
-                            aria-expanded="false"
-                        >
-                            {strings.register}
-                        </a>
-                    </li>
-                </Menu>
-              </div>
-            </div>
-              <div
-                  className={`nav-toggle-btn ${gContext.visibleOffCanvas ? "collapsed" : ""}`}
-                  data-toggle="collapse"
-                  data-target="#mobile-menu"
-                  aria-controls="mobile-menu"
-                  aria-expanded="false"
-                  aria-label="Toggle navigation"
-                  onClick={gContext.toggleOffCanvas}
-              >
-                  <MenuIcon className='menu-icon'/>
-              </div>
-
-              <Hidden mdUp>
-                  <div style={{position:'absolute',right: 0}}>
-                      <div className="position-relative" style={{zIndex: 99999999999}}>
-                          <a
-                              className="dropdown-toggle"
-                              data-toggle="dropdown"
-                              href="/#"
-                              onClick={(e)=> {
-                                  e.preventDefault()
-                                  setOpen(true)
-                              }}
-                          >
-                              <img src={require(`../../assets/image/flags/${locale.code}.png`)}/>
-                          </a>
-                          {
-                              open &&
+                                    </a>
+                                    {
+                                        open &&
                               <MenuDropdown
                                   className="menu-dropdown dropdown-right position-absolute bg-white"
                               >
@@ -295,7 +291,7 @@ const Header = ({ isDark = false }) => {
                                           <li
                                               className="drop-menu-item"
                                               key={index}
-                                              onClick={()=>{dispatch({type:SET_APP_LOCALE, payload: locale});}}
+                                              onClick={() => {dispatch({ type: SET_APP_LOCALE, payload: locale });}}
                                           >
                                               <img src={require(`../../assets/image/flags/${locale.code}.png`)}/>
                                               {locale.name}
@@ -303,20 +299,20 @@ const Header = ({ isDark = false }) => {
                                       ))
                                   }
                               </MenuDropdown>
-                          }
-                      </div>
-                  </div>
-              </Hidden>
-          </nav>
-        </Container>
-      </SiteHeader>
-      <Offcanvas
-        show={gContext.visibleOffCanvas}
-        onHideOffcanvas={gContext.toggleOffCanvas}
-      >
-        <NestedMenu />
-      </Offcanvas>
-    </>
-  );
+                                    }
+                                </div>
+                            </div>
+                        </Hidden>
+                    </nav>
+                </Container>
+            </SiteHeader>
+            <Offcanvas
+                show={gContext.visibleOffCanvas}
+                onHideOffcanvas={gContext.toggleOffCanvas}
+            >
+                <NestedMenu />
+            </Offcanvas>
+        </>
+    );
 };
 export default Header;

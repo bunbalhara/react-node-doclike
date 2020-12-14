@@ -61,20 +61,20 @@ const CardTitle = styled.h4`
 `;
 
 const Title = ({ variant, children, ...rest }) => {
-  let TitleStyled = SectionTitle;
+    let TitleStyled = SectionTitle;
 
-  switch (variant) {
-    case "card":
-      TitleStyled = CardTitle;
-      break;
-    case "hero":
-      TitleStyled = HeroTitle;
-      break;
-    default:
-      TitleStyled = SectionTitle;
-  }
+    switch (variant) {
+        case "card":
+            TitleStyled = CardTitle;
+            break;
+        case "hero":
+            TitleStyled = HeroTitle;
+            break;
+        default:
+            TitleStyled = SectionTitle;
+    }
 
-  return <TitleStyled color="heading" {...rest}> { children } </TitleStyled>;
+    return <TitleStyled color="heading" {...rest}> { children } </TitleStyled>;
 };
 
 export default Title;

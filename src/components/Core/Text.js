@@ -25,17 +25,17 @@ const ParagraphSmall = styled(Paragraph)`
 `;
 
 const Text = ({ variant, ...props }) => {
-  let TextRender;
+    let TextRender;
 
-  switch (variant) {
-    case "small":
-      TextRender = ParagraphSmall;
-      break;
-    default:
-      TextRender = Paragraph;
-  }
+    switch (variant) {
+        case "small":
+            TextRender = ParagraphSmall;
+            break;
+        default:
+            TextRender = Paragraph;
+    }
 
-  return <TextRender color="text" {...props} />;
+    return <TextRender color="text" {...props} />;
 };
 
 export default Text;
