@@ -4,7 +4,9 @@ import { Switch, Route, BrowserRouter } from 'react-router-dom';
 
 // Redux
 import { Provider } from 'react-redux';
+
 import { makeStore } from '../store';
+
 
 // Serialize Redux store;
 import { saveState, loadState } from '../localStorage';
@@ -12,7 +14,7 @@ import { saveState, loadState } from '../localStorage';
 // firebase
 import { ReactReduxFirebaseProvider } from 'react-redux-firebase';
 import { createFirestoreInstance } from 'redux-firestore';
-import firebase from '../firebase';
+import firebase from "../firebase";
 
 const initialState = loadState();
 const store = makeStore(initialState);
@@ -48,6 +50,7 @@ const App = ({ messages }) => {
                     <BrowserRouter>
                         <Switch>
                             <Route path="/" component = {HomePage} />
+                            <Route path="/find" component = {HomePage} />
                         </Switch>
                     </BrowserRouter>
                 </LanguageProvider>

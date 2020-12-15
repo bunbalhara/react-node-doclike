@@ -1,7 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import styled from "styled-components";
 import { Container } from "react-bootstrap";
-import LocalizedStrings from 'react-localization';
 import GlobalContext from "../../context/GlobalContext";
 import Offcanvas from "../Offcanvas";
 import NestedMenu from "../NestedMenu";
@@ -13,17 +12,7 @@ import { SET_APP_LOCALE } from "../../redux/actions";
 import MenuIcon from '@material-ui/icons/Menu';
 import { JOB_SET_CURRENT_LOCATION } from "../../redux/actions";
 import { Hidden } from "@material-ui/core";
-
-let strings = new LocalizedStrings({
-    en: {
-        login: 'Log in',
-        register: "Register"
-    },
-    fr: {
-        login: "S'identifier",
-        register: "S'inscrire"
-    }
-});
+import { FormattedMessage } from "react-intl";
 
 const SiteHeader = styled.header`
     height: 70px;
@@ -180,7 +169,6 @@ const Header = ({ isDark = false }) => {
     const [showScrolling] = useState(false);
     const [showReveal] = useState(false);
     const dispatch = useDispatch();
-    strings.setLanguage(locale.code);
     const [open, setOpen] = useState(false);
 
     useEffect(() => {
@@ -239,7 +227,7 @@ const Header = ({ isDark = false }) => {
                                             role="button"
                                             aria-expanded="false"
                                         >
-                                            {strings.login}
+                                            <FormattedMessage id="login"/>
                                         </a>
                                     </li>
                                     <li className="nav-item">
@@ -249,7 +237,7 @@ const Header = ({ isDark = false }) => {
                                             role="button"
                                             aria-expanded="false"
                                         >
-                                            {strings.register}
+                                            <FormattedMessage id="register"/>
                                         </a>
                                     </li>
                                 </Menu>
