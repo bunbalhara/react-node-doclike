@@ -9,7 +9,7 @@ const cors = require('cors');
 const morgan = require('morgan');
 
 const app = express();
-const DIST_DIR = process.cwd();
+const DIST_DIR = process.cwd() + '/dist';
 const HTML_FILE = path.join(DIST_DIR, 'dist/index.html');
 
 // use bodyParser to parse application/json content-type
