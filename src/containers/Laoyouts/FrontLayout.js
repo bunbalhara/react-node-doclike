@@ -1,12 +1,13 @@
 import React from 'react';
+import { BaseLayout } from "Container/Laoyouts/BaseLayout";
 
 
 export const FrontLayout = (props) => {
     const { children } = props;
 
     return (
-        <div>
+        <BaseLayout>
             {children}
-        </div>
+        </BaseLayout>
     );
 };

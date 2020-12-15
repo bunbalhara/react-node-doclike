@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Switch, Route, BrowserRouter } from 'react-router-dom';
 
 // Redux
 import { Provider } from 'react-redux';
@@ -36,14 +37,19 @@ const rrfProps = {
 
 // Language
 import { LanguageProvider } from "./LanguageProvider";
-import { FormattedMessage } from "react-intl";
+
+import { HomePage } from "Pages/index";
 
 const App = ({ messages }) => {
     return (
         <Provider store = {store}>
             <ReactReduxFirebaseProvider {...rrfProps}>
                 <LanguageProvider messages={messages} >
-                    <FormattedMessage id="testMessage" />
+                    <BrowserRouter>
+                        <Switch>
+                            <Route path="/" component = {HomePage} />
+                        </Switch>
+                    </BrowserRouter>
                 </LanguageProvider>
             </ReactReduxFirebaseProvider>
         </Provider>

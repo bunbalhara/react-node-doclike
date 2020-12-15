@@ -44,7 +44,8 @@ module.exports = {
             'Config': path.resolve(__dirname, './src/config'),
             'Utils': path.resolve(__dirname, './src/utils'),
             'Context': path.resolve(__dirname, './src/context'),
-            'Actions': path.resolve(__dirname, './src/store/actions')
+            'Actions': path.resolve(__dirname, './src/store/actions'),
+            'Pages': path.resolve(__dirname, './src/pages')
         }
     }
 };
