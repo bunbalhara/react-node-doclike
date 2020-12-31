@@ -33,9 +33,9 @@ const FrontLayout = ({ children }) => {
     const [visibleLoader, setVisibleLoader] = useState(true);
 
     useLayoutEffect(() => {
-        AOS.init({ offset: 100, duration: 300, easing: "ease-out-quad", once: !0 });
-        window.addEventListener('load', AOS.refresh);
-        setVisibleLoader(false);
+        // AOS.init({ offset: 100, duration: 300, easing: "ease-out-quad", once: !0 });
+        // window.addEventListener('load', AOS.refresh);
+        // setVisibleLoader(false);
     }, []);
 
 
@@ -45,11 +45,11 @@ const FrontLayout = ({ children }) => {
                 <title>DocLike</title>
                 <link rel="icon" type="image/png" href={imgFavicon} />
             </Helmet>
-            <Loader id="loading" className={visibleLoader ? "" : "inActive"}>
-                <div className="load-circle">
-                    <span className="one" />
-                </div>
-            </Loader>
+            {/*<Loader id="loading" className={visibleLoader ? "" : "inActive"}>*/}
+            {/*    <div className="load-circle">*/}
+            {/*        <span className="one" />*/}
+            {/*    </div>*/}
+            {/*</Loader>*/}
             <Header/>
             <div className="site-body">
                 {children}

@@ -40,6 +40,8 @@ const rrfProps = {
 // Language
 import { LanguageProvider } from "./LanguageProvider";
 
+import 'Assets/less/app.less'
+
 import { HomePage } from "Pages/index";
 
 const App = ({ messages }) => {

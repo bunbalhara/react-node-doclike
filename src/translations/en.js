@@ -5,6 +5,7 @@ export default {
     doctors: 'Doctors',
     home: 'Home',
     howItWorks: 'How it works',
+    in: 'In',
     login: 'Log in',
     poweredByDoclike: 'Powered by Doclike',
     pricing: 'Pricing',

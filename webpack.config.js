@@ -71,8 +71,16 @@ module.exports = {
                 ]
             },
             {
-                test: /\.(woff|woff2|eot|ttf)$/,
-                use: [ 'url-loader' ],
+                test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '[name].[ext]',
+                            outputPath: 'fonts/'
+                        }
+                    }
+                ]
             },
             {
                 test: /\.scss$/,
@@ -89,7 +97,7 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            template: path.resolve('./index.html'),
+            template: path.resolve('./public/index.html'),
         }),
     ],
     resolve: {

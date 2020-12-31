@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "yarn eslint-fix && webpack serve --mode development && node server",
+    "dev": "webpack serve --mode development && node server",
+    "dex": "yarn eslint-fix && webpack serve --mode development && node server",
     "format": "prettier --write \"src/**/*.js\"",
     "eslint-fix": "eslint --fix \"src/**/*.js\"",
     "build": "webpack --mode production --progress",
