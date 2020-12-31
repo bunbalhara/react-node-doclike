@@ -6,7 +6,6 @@ const Home = () => {
     return (
         <FrontLayout>
             <FormattedMessage id="testMessage"/>
-            <div>dsfasdf</div>
         </FrontLayout>
     );
 };

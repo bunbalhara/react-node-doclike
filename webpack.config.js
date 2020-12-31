@@ -59,7 +59,16 @@ module.exports = {
             },
             {
                 test: /\.(png|jpg|gif|svg|pdf)$/,
-                use: [ 'file-loader' ],
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            limit: 200000,
+                            name: 'static/media/[name].[hash:8].[ext]',
+                            esModule: false,
+                        }
+                    }
+                ]
             },
             {
                 test: /\.(woff|woff2|eot|ttf)$/,

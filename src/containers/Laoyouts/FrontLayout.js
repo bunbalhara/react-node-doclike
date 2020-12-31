@@ -5,11 +5,12 @@ import React, {
 
 import { BaseLayout } from "Containers/Laoyouts/BaseLayout";
 import styled from "styled-components";
-
+import './style.less';
 import AOS from "aos";
 
 import { Helmet } from "react-helmet";
 import imgFavicon from "Assets/favicon.png";
+import { Header } from "Components";
 
 const Loader = styled.div`
   position: fixed;
@@ -32,7 +33,8 @@ const FrontLayout = ({ children }) => {
     const [visibleLoader, setVisibleLoader] = useState(true);
 
     useLayoutEffect(() => {
-        AOS.init({ offset: 100, duration: 700, easing: "ease-out-quad", once: !0 }); window.addEventListener('load', AOS.refresh);
+        AOS.init({ offset: 100, duration: 300, easing: "ease-out-quad", once: !0 });
+        window.addEventListener('load', AOS.refresh);
         setVisibleLoader(false);
     }, []);
 
@@ -48,7 +50,8 @@ const FrontLayout = ({ children }) => {
                     <span className="one" />
                 </div>
             </Loader>
-            <div className="site-wrapper overflow-hidden">
+            <Header/>
+            <div className="site-body">
                 {children}
             </div>
         </BaseLayout>
