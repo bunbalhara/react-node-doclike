@@ -6,5 +6,39 @@
   top: 0;
   background-color: white;
   box-shadow: 0 0 4px 2px #33333333;
-  z-index: 10000;
+  z-index: 500;
+
+  .wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 100%;
+
+    .left-box{
+      position: absolute;
+      left: 0;
+      width: max-content;
+    }
+
+    .logo-box{
+
+    }
+
+    .right-box{
+      position: absolute;
+      right: 0;
+      width: max-content;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .menu-item{
+        color: #555555;
+        text-decoration: none;
+        padding: 0 15px;
+        font-family: Lato-Regular;
+        font-size: 18px;
+      }
+    }
+  }
 }
