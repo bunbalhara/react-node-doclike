@@ -17,7 +17,7 @@ const Logo = () => {
                         <FormattedMessage id="in" />
                     </div>
                     <div className="text-country" >
-                        <FormattedMessage id="country" />
+                        <FormattedMessage id="france" />
                     </div>
                     <div className="powered-by-doclike">
                         <FormattedMessage id="poweredByDoclike"/>

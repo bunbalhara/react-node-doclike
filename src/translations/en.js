@@ -3,6 +3,7 @@ export default {
     country: 'Country',
     doctor: 'Doctor',
     doctors: 'Doctors',
+    france: 'France',
     home: 'Home',
     howItWorks: 'How it works',
     in: 'In',
