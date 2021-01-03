@@ -11,6 +11,7 @@ import AOS from "aos";
 import { Helmet } from "react-helmet";
 import imgFavicon from "Assets/favicon.png";
 import { Header } from "Components";
+import {Footer} from "Components/Footer";
 
 const Loader = styled.div`
   position: fixed;
@@ -54,6 +55,7 @@ const FrontLayout = ({ children }) => {
             <div className="site-body">
                 {children}
             </div>
+            <Footer/>
         </BaseLayout>
     );
 };
