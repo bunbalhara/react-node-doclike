@@ -4,6 +4,11 @@ import Logo from "Components/Logo";
 import { Container, Row, Col } from "react-bootstrap";
 import {Link} from "react-router-dom";
 import styled from "styled-components";
+import TwitterIcon from '@material-ui/icons/Twitter';
+import LinkedInIcon from '@material-ui/icons/LinkedIn';
+import FacebookIcon from '@material-ui/icons/Facebook';
+
+import './style.scss'
 
 const appStore = require('Assets/image/app-store.png')
 const googlePlay = require('Assets/image/google-play.png')
@@ -19,20 +24,16 @@ const UlStyled = styled.ul`
 
 export const Footer = () => {
     return (
-        <Box bg="white" style={{borderTop: 'solid 1px #8080803f'}}>
+        <Box className="footer">
             <Container>
-                <Box
-                    css={`
-              padding: 80px 0 60px;
-            `}
-                >
-                    <Row className="justify-content-center">
+                <Box>
+                    <Row>
                         <Col lg="4" md="4" style={{display: 'flex',justifyContent: 'flex-start', alignItems: 'flex-start', flexDirection:'column'}}>
-                            <Logo  />
+                            <Logo />
                             <div style={{fontSize: 16}}>Discover amazing things toto evrywhere you go.</div>
                             <div className="pr-lg-5" style={{display:'flex', flexDirection:'row', justifyContent:'space-between', marginTop: 20, width:'100%'}}>
-                                {/*<img src={appStore} style={{width: 150, height:50}} alt='app store'/>*/}
-                                {/*<img src={googlePlay} style={{width: 150, height: 50}} alt='google play store'/>*/}
+                                <img src={appStore} style={{width: 150, height:50}} alt='app store'/>
+                                <img src={googlePlay} style={{width: 150, height: 50}} alt='google play store'/>
                             </div>
                         </Col>
                         <Col lg="6" md="8" className="mt-5 mt-lg-0">
@@ -89,7 +90,7 @@ export const Footer = () => {
                                             </li>
                                             <li>
                                                 <Link to="/terms-of-service">
-                                                    <a target="_blank" >Terms Of Service</a>
+                                                    Terms Of Service
                                                 </Link>
                                             </li>
                                         </UlStyled>
@@ -107,13 +108,13 @@ export const Footer = () => {
                                                 </Link>
                                             </li>
                                             <li>
-                                                <a to="/#" target="_blank" style={{whiteSpace:'nowrap'}}>
+                                                <Link to="/" style={{whiteSpace:'nowrap'}}>
                                                     Phone: 1 (00) 832 2342
-                                                </a>
+                                                </Link>
                                             </li>
                                             <li>
                                                 <Link to="/privacy-policy">
-                                                    <a target="_blank">Privacy Policy</a>
+                                                    Privacy Policy
                                                 </Link>
                                             </li>
                                         </UlStyled>
@@ -129,23 +130,15 @@ export const Footer = () => {
                             <p>2020 &copy; DocLike powered by Hannapp's. All rights reserved</p>
                         </Col>
                         <Col sm="6" className="text-sm-right text-center">
-                            <ul className="social-icons">
-                                <li>
-                                    <Link to="/" target="_blank">
-                                        <i className="icon icon-logo-twitter"></i>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link to="/" target="_blank">
-                                        <i className="icon icon-logo-linkedin"></i>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link to="/" target="_blank">
-                                        <i className="icon icon-logo-facebook"></i>
-                                    </Link>
-                                </li>
-                            </ul>
+                            <Link to="/">
+                                <TwitterIcon/>
+                            </Link>
+                            <Link to="/">
+                                <LinkedInIcon/>
+                            </Link>
+                            <Link to="/">
+                                <FacebookIcon/>
+                            </Link>
                         </Col>
                     </Row>
                 </div>

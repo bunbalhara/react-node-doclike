@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import './style.less';
+import './style.scss';
 import Logo from "Components/Logo";
 import MenuIcon from '@material-ui/icons/Menu';
 import Drawer from '@material-ui/core/Drawer';

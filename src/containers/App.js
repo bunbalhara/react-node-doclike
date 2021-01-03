@@ -40,7 +40,7 @@ const rrfProps = {
 // Language
 import { LanguageProvider } from "./LanguageProvider";
 
-import 'Assets/less/app.less'
+import 'Assets/scss/app.scss'
 
 import { HomePage } from "Pages/index";
 

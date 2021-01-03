@@ -5,9 +5,9 @@ import React, {
 
 import { BaseLayout } from "Containers/Laoyouts/BaseLayout";
 import styled from "styled-components";
-import './style.less';
+import './style.scss';
 import AOS from "aos";
-
+import CircularProgress from '@material-ui/core/CircularProgress';
 import { Helmet } from "react-helmet";
 import imgFavicon from "Assets/favicon.png";
 import { Header } from "Components";
@@ -24,6 +24,9 @@ const Loader = styled.div`
   opacity: 1;
   visibility: visible;
   transition: all 1s ease-out 1.5s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   &.inActive {
     opacity: 0;
     visibility: hidden;
@@ -34,9 +37,9 @@ const FrontLayout = ({ children }) => {
     const [visibleLoader, setVisibleLoader] = useState(true);
 
     useLayoutEffect(() => {
-        // AOS.init({ offset: 100, duration: 300, easing: "ease-out-quad", once: !0 });
-        // window.addEventListener('load', AOS.refresh);
-        // setVisibleLoader(false);
+        AOS.init({ offset: 100, duration: 300, easing: "ease-out-quad", once: !0 });
+        window.addEventListener('load', AOS.refresh);
+        setVisibleLoader(false);
     }, []);
 
 
@@ -46,11 +49,9 @@ const FrontLayout = ({ children }) => {
                 <title>DocLike</title>
                 <link rel="icon" type="image/png" href={imgFavicon} />
             </Helmet>
-            {/*<Loader id="loading" className={visibleLoader ? "" : "inActive"}>*/}
-            {/*    <div className="load-circle">*/}
-            {/*        <span className="one" />*/}
-            {/*    </div>*/}
-            {/*</Loader>*/}
+            <Loader className={visibleLoader ? "" : "inActive"}>
+                <CircularProgress/>
+            </Loader>
             <Header/>
             <div className="site-body">
                 {children}

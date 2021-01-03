@@ -50,12 +50,12 @@ module.exports = {
                 use: ['babel-loader']
             },
             {
-                test: /\.less$/,
+                test: /\.s[ac]ss$/i,
                 use: [
-                    'style-loader',
-                    'css-loader',
-                    'less-loader',
-                ],
+                    "style-loader",
+                    "css-loader",
+                    "sass-loader"
+                ]
             },
             {
                 test: /\.(png|jpg|gif|svg|pdf)$/,
@@ -80,13 +80,6 @@ module.exports = {
                             outputPath: 'fonts/'
                         }
                     }
-                ]
-            },
-            {
-                test: /\.scss$/,
-                use: [
-                    "css-loader",
-                    "sass-loader"
                 ]
             }
         ]

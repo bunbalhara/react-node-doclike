@@ -2,7 +2,7 @@ import React from "react";
 import imgLogo from "Assets/image/logo.png";
 import { Link } from 'react-router-dom';
 import { FormattedMessage } from "react-intl";
-import './style.less';
+import './style.scss';
 
 const Logo = () => {
     return (
